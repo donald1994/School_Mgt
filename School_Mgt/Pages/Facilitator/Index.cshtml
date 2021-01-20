@@ -1,0 +1,56 @@
+﻿@page
+@model School_Mgt.Pages.Facilitator.IndexModel
+@{
+}
+<form method="get">
+    <div class="border bg-light">
+        <table class="table table-striped border">
+            <tr class="table-secondary">
+                <th>
+                    @Html.DisplayNameFor(m => m.FacListVM.ApplicationUserList[0].Name)
+
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.FacListVM.ApplicationUserList[0].PhoneNumber)
+
+                </th>
+                <th>
+                    @Html.DisplayNameFor(m => m.FacListVM.ApplicationUserList[0].Email)
+
+                </th>
+                <th></th>
+                <th></th>
+                @foreach (var item in Model.FacListVM.ApplicationUserList)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(m => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.PhoneNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Email)
+                    </td>
+                    <td>
+                        <a asp-page="../Students/Index" asp-route-userId="@item.Id" style="text-decoration:none;">
+                            <img src="~/images/images.jpg" width="40" /> &nbsp; View Students
+                        </a>
+                    </td>
+                    <td style="width:150px;">
+                        <div class=" btn-group" role="group">
+                            <a class="btn btn-primary text-white" asp-page="Edit" asp-route-Id="@item.Id">
+                                Edit
+                            </a>
+                            <a class="btn btn-danger text-white" asp-page="/Account/Manage/DeletePersonalData" asp-area="Identity" asp-route-Id="@item.Id">
+                                Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+
+            }
+                
+            </table>
+        </div>
+    </form>

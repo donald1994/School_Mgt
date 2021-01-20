@@ -1,0 +1,129 @@
+﻿@page
+@model School_Mgt.Pages.Students.IndexModel
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(m => m.ProgramStudentVM.Students.FirstOrDefault().FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.ProgramStudentVM.Students.FirstOrDefault().Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.ProgramStudentVM.Students.FirstOrDefault().PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.ProgramStudentVM.Students.FirstOrDefault().Program)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ProgramStudentVM.Students)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Program)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class=" col-md-6 offset-md-3">
+    <div class="row">
+        <div class="col-sm-4">
+            <label asp-for="ProgramStudentVM.FacilitorsUserObj.Name"></label>
+        </div>
+        <div class="col-sm-8">
+            <input asp-for="ProgramStudentVM.FacilitorsUserObj.Name" disabled class="form-control" />
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <label asp-for="ProgramStudentVM.FacilitorsUserObj.Email"></label>
+        </div>
+        <div class="col-sm-8">
+            <input asp-for="ProgramStudentVM.FacilitorsUserObj.Email" disabled class="form-control" />
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <label asp-for="ProgramStudentVM.FacilitorsUserObj.PhoneNumber"></label>
+        </div>
+        <div class="col-sm-8">
+            <input asp-for="ProgramStudentVM.FacilitorsUserObj.PhoneNumber" disabled class="form-control" />
+        </div>
+    </div>
+</div>
+<div>
+@if (Model.ProgramStudentVM.Students.Count() == 0)
+{
+    <p>
+        <label class="text-info">No Student Available please add Students</label>
+    </p>
+}
+else
+{
+    <table class="table table-striped border">
+        <tr class="table-secondary">
+            <th>
+                @Html.DisplayNameFor(m => m.ProgramStudentVM.Students.FirstOrDefault().FullName)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.ProgramStudentVM.Students.FirstOrDefault().FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(m => m.ProgramStudentVM.Students.FirstOrDefault().FullName)
+            </th>
+            <th></th>
+           
+            <th></th>
+        </tr>
+        @foreach (var item in Model.ProgramStudentVM.Students)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.FullName)
+                </td>
+
+
+                <td>
+                   
+                </td>
+               
+                <td>
+                   
+                </td>
+            </tr>
+
+        }
+    </table>
+}
+        </div>
